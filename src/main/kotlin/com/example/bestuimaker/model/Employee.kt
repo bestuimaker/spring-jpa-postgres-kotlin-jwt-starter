@@ -18,7 +18,7 @@ class Employee {
     var email: @NotBlank @Size(max = 50) @Email String? = null
     var password: @NotBlank @Size(max = 120) String? = null
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     var roles: Set<Role> = HashSet()
 
     constructor() {}

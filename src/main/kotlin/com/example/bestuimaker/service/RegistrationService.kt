@@ -16,11 +16,9 @@ class RegistrationService {
     @Autowired
     lateinit var roleRepository: RoleRepository
 
-    fun save() : String{
-        repository.save(Registration("Bhagwati", "bhagwati.pandey@gmail.com"))
-        repository.save(Registration("Kavita", "kavita.pandey@gmail.com"))
-        repository.save(Registration("Kavita", "kavita.pandey@gmail.com"))
 
+    fun saveRoles() : String {
+        // Sample roles
         val role = Role()
         role.name= ERole.ROLE_EMPLOYEE
         roleRepository.save(role);
@@ -28,10 +26,24 @@ class RegistrationService {
         role2.name= ERole.ROLE_ADMIN
         roleRepository.save(role2);
 
-        return "Saved data to database";
+        // You can add as many as roles here
+
+
+        return "Saved sample roles to database"
     }
 
-    fun findAll () : Iterable<Registration>{
+    // Lets Save some sample users to database
+    fun saveRegistrations() : String{
+        // These users are the sample data to show how to save records through JPA in database
+        repository.save(Registration("Tom", "tom@gmail.com"))
+        repository.save(Registration("Dick", "dick@gmail.com"))
+        repository.save(Registration("Harry", "harry@gmail.com"))
+
+        return "Saved sample data to database"
+    }
+
+    // Lets get all the sample user from database
+    fun findAllRegistrations () : Iterable<Registration>{
         return repository.findAll()
     };
 }
